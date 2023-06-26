@@ -11,7 +11,7 @@
                 <div class="sidebar-brand-icon ">
                     <i class="fa fa-regular fa-store"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">TOKO ONLINE <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">S-Shoping <sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -19,7 +19,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?= site_url('dashboard') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -36,27 +36,27 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?= site_url('kategori/elektronik') ?>">
                     <i class="fas fa-fw fa-tv"></i>
                     <span>Elektronik</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?= site_url('kategori/pakaian_pria') ?>">
                     <i class="fas fa-fw fa-tshirt"></i>
                     <span>Pakaian Pria</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?= site_url('kategori/pakaian_wanita') ?>">
                     <i class="fas fa-fw fa-tshirt"></i>
                     <span>Pakaian Wanita</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?= site_url('kategori/pakaian_anak_anak') ?>">
                     <i class="fas fa-fw fa-tshirt"></i>
                     <span>Pakaian Anak-Anak</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="<?= site_url('kategori/peralatan_olahraga') ?>">
                     <i class="fas fa-fw fa-futbol"></i>
                     <span>Peralatan Olahraga</span></a>
             </li>
@@ -129,7 +129,7 @@
                         </li>
 
                         <div class="navbar">
-                            <ul class="nav navbar-nav navbar-right"></ul>
+                            <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <?php
                                 $keranjang = 'Keranjang Belanja: ' . $this->cart->total_items() . 'items'
@@ -137,40 +137,16 @@
                                 <?php echo anchor('dashboard/detail_keranjang',$keranjang) ?>
 
                             </li>
+                            </ul>
+                            <div class="topbar-divider d-none d-sm-block"></div>
+                            <ul class="nav navbar-nav navbar-right">
+                            <?php if($this->session->userdata('username')) { ?>
+                                 <li><div>Selamat Datang <?php echo $this->session->userdata('username')?></div></li>
+                                 <li class="ml-2"><?php echo anchor('auth/logout','logout')?></li>
+                                 <?php  }   else{ ?>
+                                    <li><?php echo anchor('auth/login','login');} ?></li>
+                        </ul>
                         </div>
-
-
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
                     </ul>
-
+                    </ul>
                 </nav>
